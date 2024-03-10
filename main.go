@@ -9,27 +9,8 @@ func main() {
 	for {
 		board := NewBoard()
 		board.ShowBoard()
-        // break
+		// break
 	}
-	// printHangMan(6)
-	// q := english.RandomWord()
-	// println(q)
-	// isLetter("a")
-	// first := getUserData("Enter first number: ")
-
-	//  iFirst, err := strconv.Atoi(first)
-	//  if err != nil {
-	//     fmt.Printf("please enter number")
-	// }
-
-	// second := getUserData("Enter second number: ")
-
-	// iSecond, err := strconv.Atoi(second)
-	// if  err != nil {
-	//     fmt.Printf("please enter number..")
-	// }
-
-	// fmt.Printf("Sum of two numbers: %d" , (iFirst + iSecond))
 }
 
 // func getUserData(promtString string) string {

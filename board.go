@@ -33,25 +33,25 @@ func (thiss *Board) ShowBoard() {
 	fmt.Println("")
 	thiss.printProgress()
 	thiss.printHangMan()
-    thiss.printWrongs()
+	thiss.printWrongs()
 	// thiss.revealCorrectAnswer()
 	if thiss.gameStatus == playing {
 		thiss.makeAGuess()
 	} else {
-        if thiss.gameStatus == win {
-            fmt.Println("Congratulations")
-        }
-        if thiss.gameStatus == lost {
-            fmt.Println("Answer was:")
-            thiss.revealCorrectAnswer()
-        }
-        if thiss.gameStatus == lost || thiss.gameStatus == win  {
-            fmt.Println("")
-            fmt.Println("")
-            fmt.Println("--------------")
-            fmt.Println("Starting New Game....")
-        }
-    }
+		if thiss.gameStatus == win {
+			fmt.Println("Congratulations")
+		}
+		if thiss.gameStatus == lost {
+			fmt.Println("Answer was:")
+			thiss.revealCorrectAnswer()
+		}
+		if thiss.gameStatus == lost || thiss.gameStatus == win {
+			fmt.Println("")
+			fmt.Println("")
+			fmt.Println("--------------")
+			fmt.Println("Starting New Game....")
+		}
+	}
 }
 
 func (thiss *Board) makeAGuess() {
@@ -71,12 +71,11 @@ func (thiss *Board) GetState() string {
 func (thiss *Board) checkAnswer(guess string) {
 	guess = strings.ToUpper(strings.TrimSpace(guess))
 
+	if slices.Contains(thiss.guesses, guess) {
+		return
+	}
 
-    if slices.Contains(thiss.guesses, guess){
-        return
-    }
-
-    thiss.guesses = append(thiss.guesses, guess)
+	thiss.guesses = append(thiss.guesses, guess)
 
 	if strings.Contains(thiss.secretWord, guess) {
 		thiss.corrects = append(thiss.corrects, guess)
@@ -97,15 +96,15 @@ func (thiss *Board) checkScore() {
 	}
 }
 func (thiss *Board) printProgress() {
-    fmt.Printf("??? %s ??? (%d letters)", thiss.progress, len(thiss.secretWord)) 
+	fmt.Printf("??? %s ??? (%d letters)", thiss.progress, len(thiss.secretWord))
 }
 
 func (thiss *Board) printWrongs() {
-    if len(thiss.wrongs) > 0 {
-        fmt.Printf("Wrong guesses: %s ", thiss.wrongs) 
-    }
-    fmt.Println("")
-    fmt.Println("")
+	if len(thiss.wrongs) > 0 {
+		fmt.Printf("Wrong guesses: %s ", thiss.wrongs)
+	}
+	fmt.Println("")
+	fmt.Println("")
 }
 
 func (thiss *Board) replaceCorrectLetters(guess string) {
