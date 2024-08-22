@@ -27,6 +27,7 @@ func NewBoard() *Board {
 }
 
 func (thiss *Board) ShowBoard() {
+    CallClear()
 	fmt.Println("")
 	fmt.Println("")
 	fmt.Println("------Guess Me--------------")
@@ -49,7 +50,7 @@ func (thiss *Board) ShowBoard() {
 			fmt.Println("")
 			fmt.Println("")
 			fmt.Println("--------------")
-			fmt.Println("Starting New Game....")
+            startNewGame()
 		}
 	}
 }
@@ -139,6 +140,16 @@ func expectALetter() string {
 	var retVal string
 	fmt.Scanln(&retVal)
 	return retVal
+}
+
+func startNewGame() {
+	fmt.Print("Press any button to start a new game: ")
+	var retVal string
+	fmt.Scanln(&retVal)
+
+    if retVal != "" {
+        return
+    }
 }
 
 func (thiss *Board) printHangMan() {
